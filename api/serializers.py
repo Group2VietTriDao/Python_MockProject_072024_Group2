@@ -1,7 +1,16 @@
+#third-party
 from rest_framework import serializers
 from rest_framework.permissions import BasePermission
-from .models import User, CreateRole, Employee,ServiceRequest
-from .models import Service, Contract
+
+#Local Django
+from .models import (
+    Contract,
+    Employee,
+    ServiceRequest,
+    Service, 
+    User,
+)
+
 
 class IsAdminUser(BasePermission):
     def has_permission(self, request, view):
@@ -10,9 +19,9 @@ class IsAdminUser(BasePermission):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('user_id', 'role_id', 'employee_id', 'userName', 
+        fields = ('user_id', 'role_id', 'username', 
                   'password', 'email', 'status', 'avatar', 'gender', 
-                  'dateOfBirth', 'address', 'phoneNumber',)        
+                  'date_of_birth', 'address', 'phone_number',)        
         
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,18 +31,18 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
-        fields = ('service_id', 'serviceName', 'description', 'price',)
+        fields = ('service_id', 'service_name', 'description', 'price',)
 
 class ServiceRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceRequest
-        fields = ('user_id', 'service_id', 'status', 'numberOfGuards',
-                  'budget', 'address', 'phoneNumber', 'email',
-                  'startDate', 'endDate', 'note',)
+        fields = ('user_id', 'service_id', 'status', 'number_of_guards',
+                  'budget', 'address', 'phone_number', 'email',
+                  'start_date', 'end_date', 'note',)
         
 class ContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
-        fields = ('serviceRequest_id', 'status', 'numberOfGuards',
-                  'address', 'startDate', 'endDate', 'price', 
+        fields = ('service_request_id', 'status', 'number_of_guards',
+                  'address', 'start_date', 'end_date', 'price', 
                   'tax', 'paymethod',)

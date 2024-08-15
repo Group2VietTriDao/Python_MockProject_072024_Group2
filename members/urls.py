@@ -1,5 +1,9 @@
+#Django
 from django.urls import path
+
+#Local Django
 from . import views
+
 
 urlpatterns = [
     path('login_user', views.login_user, name='login'),
