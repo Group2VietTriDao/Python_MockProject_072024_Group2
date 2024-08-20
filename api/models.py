@@ -61,10 +61,8 @@ class Employee(User):
 class Notification(User):
     notification_id = models.AutoField(primary_key=True,)
     employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE,)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
     titile = models.CharField(max_length=100,)
     message = models.CharField(max_length=255,)
-    created_date=models.DateTimeField(auto_now_add=True,)
 
 class Service(models.Model):
     service_id = models.IntegerField(primary_key=True,)
@@ -172,7 +170,6 @@ class Mission(Contract):
     
 class Attendance(Mission):
     attendance_id = models.AutoField(primary_key=True,)
-    mission_id = models.ForeignKey(Mission, on_delete=models.CASCADE,)
     checkin_time = models.DateTimeField()
     checkout_time = models.DateTimeField()
     date = models.DateField()

@@ -32,7 +32,7 @@ from .serializers import (
     FileSerializer,
     MissionSerializer,
     NotificationSerializer,
-    Report,
+    ReportSerializer,
     TrainingCatalogSerializer,
     Profile,
     ServiceRequestSerializer, 
@@ -150,7 +150,7 @@ class NotificationCreate(generics.CreateAPIView):
     serializer_class = NotificationSerializer
     permission_classes = [IsAdminUser]
 
-class NotificationView(generics.UpdateAPIView):
+class NotificationView(generics.ListAPIView):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
     permission_classes = [IsAdminUser]
@@ -166,7 +166,12 @@ class MissionCreate(generics.CreateAPIView):
     serializer_class = MissionSerializer
     permission_classes = [IsAdminUser]
 
-class MissionView(generics.UpdateAPIView):
+class MissionUpdate(generics.UpdateAPIView):
+    queryset = Mission.objects.all()
+    serializer_class = MissionSerializer
+    permission_classes = [IsAdminUser]
+
+class MissionView(generics.ListAPIView):
     queryset = Mission.objects.all()
     serializer_class = MissionSerializer
     permission_classes = [IsAdminUser]
@@ -182,10 +187,15 @@ class FileCreate(generics.CreateAPIView):
     serializer_class = FileSerializer
     permission_classes = [IsAdminUser]
 
-class FileView(generics.UpdateAPIView):
+class FileView(generics.ListAPIView):
     queryset = File.objects.all()
     serializer_class = FileSerializer
     permission_classes = [IsAdminUser]
+
+class FileUpdate(generics.UpdateAPIView):
+    queryset = File.objects.all()
+    serializer_class = FileSerializer
+    permission_classes = [IsAdminUser]    
 
 class FileRetrieve(generics.RetrieveAPIView):
     queryset = File.objects.all()
@@ -198,7 +208,12 @@ class EmployeeTrainingCreate(generics.CreateAPIView):
     serializer_class = EmployeeTrainingSerializer
     permission_classes = [IsAdminUser]
 
-class EmployeeTrainingView(generics.UpdateAPIView):
+class EmployeeTrainingUpdate(generics.UpdateAPIView):
+    queryset = Employee_Training.objects.all()
+    serializer_class = EmployeeTrainingSerializer
+    permission_classes = [IsAdminUser]
+
+class EmployeeTrainingView(generics.ListAPIView):
     queryset = Employee_Training.objects.all()
     serializer_class = EmployeeTrainingSerializer
     permission_classes = [IsAdminUser]
@@ -214,7 +229,12 @@ class AttendanceCreate(generics.CreateAPIView):
     serializer_class = AttendanceSerializer
     permission_classes = [IsAdminUser]
 
-class AttendanceView(generics.UpdateAPIView):
+class AttendanceUpdate(generics.UpdateAPIView):
+    queryset = Attendance.objects.all()
+    serializer_class = AttendanceSerializer
+    permission_classes = [IsAdminUser]
+
+class AttendanceView(generics.ListAPIView):
     queryset = Attendance.objects.all()
     serializer_class = AttendanceSerializer
     permission_classes = [IsAdminUser]
@@ -230,7 +250,12 @@ class ClassTrainingCreate(generics.CreateAPIView):
     serializer_class = ClassTrainingSerializer
     permission_classes = [IsAdminUser]
 
-class ClassTrainingView(generics.UpdateAPIView):
+class ClassTrainingUpdate(generics.UpdateAPIView):
+    queryset = ClassTraining.objects.all()
+    serializer_class = ClassTrainingSerializer
+    permission_classes = [IsAdminUser]
+
+class ClassTrainingView(generics.ListAPIView):
     queryset = ClassTraining.objects.all()
     serializer_class = ClassTrainingSerializer
     permission_classes = [IsAdminUser]
@@ -241,4 +266,45 @@ class ClassTrainingRetrieve(generics.RetrieveAPIView):
     lookup_field = 'classtraining_id'
     permission_classes = [IsAdminUser]
 
-    
+class ReportCreate(generics.CreateAPIView):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+    permission_classes = [IsAdminUser]
+
+class ReportUpdate(generics.UpdateAPIView):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+    permission_classes = [IsAdminUser]
+
+class ReportView(generics.ListAPIView):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+    permission_classes = [IsAdminUser]
+
+class ReportRetrieve(generics.RetrieveAPIView):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+    lookup_field = 'report_id'
+    permission_classes = [IsAdminUser]
+
+class TrainingCatalogCreate(generics.CreateAPIView):
+    queryset = TrainingCatalog.objects.all()
+    serializer_class = TrainingCatalogSerializer
+    permission_classes = [IsAdminUser]
+
+class TrainingCatalogUpdate(generics.UpdateAPIView):
+    queryset = TrainingCatalog.objects.all()
+    serializer_class = TrainingCatalogSerializer
+    permission_classes = [IsAdminUser]
+
+class TrainingCatalogView(generics.ListAPIView):
+    queryset = TrainingCatalog.objects.all()
+    serializer_class = TrainingCatalogSerializer
+    permission_classes = [IsAdminUser]
+
+class TrainingCatalogRetrieve(generics.RetrieveAPIView):
+    queryset = TrainingCatalog.objects.all()
+    serializer_class = TrainingCatalogSerializer
+    lookup_field = 'training_catalog_id'
+    permission_classes = [IsAdminUser]
+
